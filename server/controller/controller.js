@@ -22,6 +22,18 @@ module.exports = {
             .catch(err => {
                 res.status(500).send({ errorMessage: 'oopsy daisy' })
             })
+    },
+
+    deleteProducts: (req, res) => {
+        const dbInstance = req.app.get('db')
+        const { product_id } = req.params
+
+        dbInstance.delete_product(product_id)
+            .then(() => res.sendStatus(200))
+            .catch(err => {
+                res.status(500).send({ errorMessage: 'oopsy daisy' })
+            })
     }
+
 
 }

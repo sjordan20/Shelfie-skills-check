@@ -22,32 +22,61 @@ class Form extends Component {
         axios.post(`/api/products`, { name, price, img })
             .then(() => this.props.getProducts())
             .catch(err => console.log(err))
+        this.resetInput()
 
     }
 
 
 
+    handleName = (event) => {
+        this.setState({ name: event.target.value })
+    }
+
+    handlePrice = (event) => {
+        this.setState({ price: event.target.value })
+    }
+
+    handleImg = (event) => {
+        this.setState({ img: event.target.value })
+    }
+
+    cancelPost = () => {
+        this.setState({
+            name: '',
+            price: 0,
+            img: ''
+        })
+
+    }
+
+    resetInput = () => {
+        this.setState({
+            name: '',
+            price: 0,
+            img: ''
+        })
+    }
 
 
 
     render() {
         console.log(this.state)
         return (
-            <div>
-                <input placeholder="Name" onChange={(event) => {
-                    this.setState({ 'name': event.target.value })
-                }} />
+            <div className='input-box'>
+                <img className='img' />
+                <div className='inputs'>
+                    <input className="input-field" placeholder="Name" value={this.state.name} onChange={this.handleName} />
 
-                <input placeholder="Price" type="number" onChange={(event) => {
-                    this.setState({ 'price': event.target.value })
-                }} />
+                    <input className="input-field" placeholder="Price" type="number" value={this.state.price} onChange={this.handlePrice} />
 
-                <input placeholder="Image" onChange={(event) => {
-                    this.setState({ 'imgUrl': event.target.value })
-                }} />
-                <button>Cancel</button>
-                <button onClick={this.postProducts} >Add</button>
-            </div>
+                    <input className="input-field" placeholder="Image" value={this.state.img} onChange={this.handleImg} />
+                </div>
+                <div className='button-container'>
+
+                    <button className="button" onClick={this.postProducts} >Add</button>
+                    <button className="button" onClick={this.cancelPost} > Cancel</button>
+                </div>
+            </div >
         );
 
     }

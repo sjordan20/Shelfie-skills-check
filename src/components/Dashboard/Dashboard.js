@@ -1,15 +1,29 @@
-import React from 'react';
-
+import React from 'react'
 import Product from '../Product/Product'
+import '../Product/product.css'
+
+
 
 function Dashboard(props) {
 
+
+
+    // const deleteProduct = (id) => {
+    //     axios.delete(`/api/products/${id}`)
+    //         .then(res => {
+    //             ({
+    //                 inventory: res.data
+    //             })
+    //         })
+    // }
 
     const inventoryList = props.inventory.map(element => {
         return (
             <Product
                 key={element.id}
                 inventory={element}
+            // deleteProduct={deleteProduct}
+
 
             />
         )
@@ -17,9 +31,9 @@ function Dashboard(props) {
 
 
     return (
-        < div >
-            Dashboard
-        {inventoryList}
+        < div className='dashboard'>
+
+            {inventoryList}
         </div >
     );
 

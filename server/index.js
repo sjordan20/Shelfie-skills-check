@@ -23,6 +23,7 @@ app.use(express.json())
 
 app.get('/api/products', ctrl.getProducts)
 app.post('/api/products', ctrl.postProducts)
+app.delete(`/api/products/:id`, ctrl.deleteProducts)
 
 
 
