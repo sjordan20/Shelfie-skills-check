@@ -5,7 +5,11 @@ function Product(props) {
 
     return (
         <div>
-            Product
+            <p>
+                {props.inventory.name}
+                {props.inventory.price}
+                {props.inventory.img}
+            </p>
         </div>
     )
 

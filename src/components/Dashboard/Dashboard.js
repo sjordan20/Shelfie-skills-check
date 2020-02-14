@@ -1,23 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Product from '../Product/Product'
 
-class Dashboard extends Component {
-    constructor(props) {
-        super(props);
-
-    }
+function Dashboard(props) {
 
 
-    render() {
+    const inventoryList = props.inventory.map(element => {
         return (
-            <div>
-                Dashboard
-                <Product />
-            </div>
-        );
-    }
+            <Product
+                key={element.id}
+                inventory={element}
+
+            />
+        )
+    })
+
+
+    return (
+        < div >
+            Dashboard
+        {inventoryList}
+        </div >
+    );
+
 }
+
 
 
 
