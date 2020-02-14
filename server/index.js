@@ -21,6 +21,9 @@ massive({
 
 app.use(express.json())
 
+app.get('/api/products', ctrl.getProducts)
+app.post('/api/products', ctrl.postProducts)
+
 
 
 app.listen(SERVER_PORT, () => {
