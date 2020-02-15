@@ -24,7 +24,7 @@ app.use(express.json())
 app.get('/api/products', ctrl.getProducts)
 app.post('/api/products', ctrl.postProducts)
 app.delete(`/api/products/:id`, ctrl.deleteProducts)
-
+app.put(`/api/products/:id`, ctrl.editProducts)
 
 
 app.listen(SERVER_PORT, () => {

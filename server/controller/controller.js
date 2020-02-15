@@ -26,9 +26,20 @@ module.exports = {
 
     deleteProducts: (req, res) => {
         const dbInstance = req.app.get('db')
-        const { product_id } = req.params
+        const { id } = req.params
+        // console.log(id)
+        dbInstance.delete_product([id])
+            .then(() => res.sendStatus(200))
+            .catch(err => {
+                res.status(500).send({ errorMessage: 'oopsy daisy' })
+            })
+    },
 
-        dbInstance.delete_product(product_id)
+    editProducts: (req, res) => {
+        const dbInstance = req.app.get('db')
+        const { params, query } = req
+
+        dbInstance.edit_products([params.id, query.name, query.price, query.img])
             .then(() => res.sendStatus(200))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'oopsy daisy' })
