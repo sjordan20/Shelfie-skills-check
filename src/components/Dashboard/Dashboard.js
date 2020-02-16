@@ -39,6 +39,7 @@ class Dashboard extends Component {
                             key={element.id}
                             inventory={element}
                             deleteProduct={this.deleteProduct}
+                            editProducts={this.props.editProducts}
                         />
                     )
                 })}

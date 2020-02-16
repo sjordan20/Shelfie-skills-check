@@ -37,9 +37,10 @@ module.exports = {
 
     editProducts: (req, res) => {
         const dbInstance = req.app.get('db')
-        const { params, query } = req
+        const { id } = req.params
+        const { name, price, img } = req.body
 
-        dbInstance.edit_products([params.id, query.name, query.price, query.img])
+        dbInstance.edit_products([id, name, price, img])
             .then(() => res.sendStatus(200))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'oopsy daisy' })

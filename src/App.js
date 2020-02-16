@@ -45,6 +45,16 @@ class App extends Component {
   //     })
   // }
 
+  editProducts = (id, obj) => {
+    // const { name, price, img } = this.state
+    axios.put(`/api/products/${id}`, obj)
+      .then(res => {
+        this.setState({
+          inventory: res.data
+        })
+      }
+      )
+  }
 
   render() {
     console.log(this.state.inventory)
@@ -52,11 +62,14 @@ class App extends Component {
       <div className="App">
 
         <Header />
-        <Form getProducts={this.getProducts} inventory={this.state.inventory} />
+        <Form getProducts={this.getProducts}
+          editProducts={this.editProducts}
+          inventory={this.state.inventory} />
         <Dashboard
           inventory={this.state.inventory}
           getProducts={this.getProducts}
           deleteProduct={this.deleteProduct}
+          editProducts={this.editProducts}
         />
 
       </div>

@@ -26,6 +26,18 @@ class Form extends Component {
 
     }
 
+    // editProducts(id, obj) {
+    //     // const { name, price, img } = this.state
+    //     axios.put(`/api/products/${id}`, obj)
+    //         .then(res => {
+    //             this.setState({
+    //                 inventory: res.data
+    //             })
+    //         }
+    //         )
+    // }
+
+
 
 
     handleName = (event) => {
