@@ -24,6 +24,7 @@ class App extends Component {
     this.getProducts()
   }
 
+
   getProducts = () => {
     axios.get(`/api/products`).then(res =>
       this.setState({ inventory: res.data }))
