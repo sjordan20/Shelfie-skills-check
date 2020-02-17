@@ -28,27 +28,29 @@ class Dashboard extends Component {
     //         )
     // })
 
+    componentDidUpdate(previousProps) {
+        if (previousProps !== this.props) {
 
+        }
+    }
 
     render() {
-        return (
-            <div className='dashboard'>
-                {this.props.inventory.map((element) => {
-                    return (
-                        <Product
-                            key={element.id}
-                            inventory={element}
-                            deleteProduct={this.deleteProduct}
-                            editProducts={this.props.editProducts}
-                        />
-                    )
-                })}
+        let mappedElements = this.props.inventory.map(element => {
+            return (
 
+                <Product
+                    key={element.id}
+                    inventory={element}
+                    deleteProduct={this.deleteProduct}
+                    editProducts={this.props.editProducts}
+                />
+            )
+        })
 
-            </div >
-        )
+        return < div className='dashboard' > {mappedElements} </div >
     }
 }
+
 
 
 export default Dashboard;

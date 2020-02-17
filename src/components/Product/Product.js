@@ -31,6 +31,12 @@ class Product extends Component {
         })
     }
 
+    // componentDidUpdate(previousProps) {
+    //     if (previousProps !== this.props) {
+
+    //     }
+    // }
+
     render() {
         // console.log(this.props)
         return (
@@ -41,11 +47,11 @@ class Product extends Component {
 
                         <div>
                             <input placeholder='Name' onChange={this.handleChangeName} />
-                            <input placeholder='Price' onChange={this.handleChangePrice} />
+                            <input placeholder='Price' type="number" onChange={this.handleChangePrice} />
 
                             <button
                                 onClick={() => {
-                                    this.props.editProducts(this.props.inventory.product_id, this.state.editName, this.state.editPrice)
+                                    this.props.editProducts(this.props.inventory.product_id, { name: this.state.editName, price: this.state.editPrice })
                                     this.toggleEdit()
                                 }} >
                                 Save

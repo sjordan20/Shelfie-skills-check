@@ -41,7 +41,10 @@ module.exports = {
         const { name, price, img } = req.body
 
         dbInstance.edit_products([id, name, price, img])
-            .then(() => res.sendStatus(200))
+            .then(res => {
+                return res.status(200).send(res)
+            })
+
             .catch(err => {
                 res.status(500).send({ errorMessage: 'oopsy daisy' })
             })
